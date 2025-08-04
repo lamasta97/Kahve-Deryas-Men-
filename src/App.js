@@ -1,9 +1,18 @@
 import React from "react";
-import Home from "./pages/Home";
-import './index.css'; // CSS dosyasını eklemeyi unutma
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import ProductPage from "./pages/ProductPage.jsx";
+
 
 function App() {
-  return <Home />;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/kategori/:kategoriAdi" element={<ProductPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
