@@ -1,23 +1,31 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import MenuLayout from "../components/MenuLayout";
 
 const dummyData = {
   headerImage: "/images/header.jpg",
-  cafeName: "HAPPY MOON'S CAFE",
+  cafeName: "KAHVE DERYASI MENÜ",
   categories: [
-    { title: "KAHVALTILIKLAR", image: "/images/kahvalti.png" },
-    { title: "BAŞLANGIÇLAR", image: "/images/baslangic.png" },
+    { title: "KAHVALTILAR", image: "/images/kahvalti.png" },
+    { title: "BAŞLANGICLAR", image: "/images/baslangic.png" },
     { title: "TATLILAR", image: "/images/tatli.png" },
     { title: "İÇECEKLER", image: "/images/icecek.png" },
   ],
 };
 
-const Home = () => (
-  <MenuLayout
-    headerImage={dummyData.headerImage}
-    cafeName={dummyData.cafeName}
-    categories={dummyData.categories}
-  />
-);
+export default function Home() {
+  const navigate = useNavigate();
 
-export default Home;
+  const handleCategoryClick = (title) => {
+    navigate(`/kategori/${title.toLowerCase()}`);
+  };
+
+  return (
+    <MenuLayout
+      headerImage={dummyData.headerImage}
+      cafeName={dummyData.cafeName}
+      categories={dummyData.categories}
+      onCategoryClick={handleCategoryClick}
+    />
+  );
+}
