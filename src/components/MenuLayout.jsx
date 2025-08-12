@@ -17,7 +17,7 @@ const MenuLayout = ({ headerImage, cafeName, categories, onCategoryClick }) => {
             key={idx}
             className="category-card"
             style={{ backgroundImage: `url(${cat.image})` }}
-            onClick={() => onCategoryClick && onCategoryClick(cat.title)}
+            onClick={() => onCategoryClick && onCategoryClick(cat.key)}
           >
             <div className="overlay">
               <h2 className="category-title">{cat.title}</h2>

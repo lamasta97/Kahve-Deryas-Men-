@@ -3,30 +3,14 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./ProductPage.css";
 
-function normalizeString(str) {
-  return str
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/ç/g, "c")
-    .replace(/ı/g, "i")
-    .replace(/ş/g, "s")
-    .replace(/ğ/g, "g")
-    .replace(/ü/g, "u")
-    .replace(/ö/g, "o")
-    .replace(/[^a-z0-9]/g, "");
-}
-
 export default function ProductPage() {
   const { kategoriAdi } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const key = normalizeString(kategoriAdi);
-
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:5000/api/products/${key}`)
+    axios.get(`http://localhost:5000/api/products/${kategoriAdi}`)
       .then(res => {
         setProducts(res.data);
         setLoading(false);
@@ -35,7 +19,7 @@ export default function ProductPage() {
         setProducts([]);
         setLoading(false);
       });
-  }, [key]);
+  }, [kategoriAdi]);
 
   const headerImage = "/images/header.jpg";
 
