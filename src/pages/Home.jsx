@@ -6,18 +6,24 @@ const dummyData = {
   headerImage: "/images/header.jpg",
   cafeName: "KAHVE DERYASI MENÜ",
   categories: [
-    { title: "KAHVALTILAR", image: "/images/kahvalti.png" },
-    { title: "BAŞLANGICLAR", image: "/images/baslangic.png" },
-    { title: "TATLILAR", image: "/images/tatli.png" },
-    { title: "İÇECEKLER", image: "/images/icecek.png" },
+    { title: "KAHVALTILAR", image: "/images/kahvalti.png", key: "kahvaltilar" },
+    { title: "BAŞLANGIÇLAR", image: "/images/baslangic.png", key: "baslangiclar" },
+    { title: "SOĞUK KAHVELER", image: "/images/sogukkahve.jpeg", key: "soguk_kahveler" },
+    { title: "ALTERNATİF SOĞUKLAR", image: "/images/alternatifsoguk.jpeg", key: "alternatif_soguklar" },
+  
+    { title: "TATLILAR", image: "/images/tatli.png", key: "tatlilar" },
+    { title: "WAFFLE", image: "/images/waffle.jpeg", key: "waffle" },
+    { title: "FONDÜ", image: "/images/fondu.png", key: "fondu" },
+    { title: "DONDURMALAR", image: "/images/dondurmalar.png", key: "dondurmalar" },
   ],
 };
+
 
 export default function Home() {
   const navigate = useNavigate();
 
-  const handleCategoryClick = (title) => {
-    navigate(`/kategori/${title.toLowerCase()}`);
+  const handleCategoryClick = (key) => {
+    navigate(`/kategori/${key}`);
   };
 
   return (
